@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -9,4 +9,10 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: []
 })
-export class CoreModule { }
+export class CoreModule {
+  constructor(@Optional() @SkipSelf() parentModule: CoreModule ){
+    if(parentModule){
+      throw new Error( 'Modulo Core já carregado. Importar-lo apenas no AppModule');
+    }
+  }
+}
