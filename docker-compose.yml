@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+    front:
+        image: node:alpine
+        container_name: angular
+        volumes: 
+            - type: bind
+              source: ./
+              target: /home/
+        ports:
+            - "4200:4200"
+        working_dir: /home/
+        command: >
+            sh -c "npm run start"
