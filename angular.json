@@ -28,9 +28,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "node_modules/foundation-sites/scss/foundation.scss"
+              "node_modules/foundation-sites/scss/foundation.scss",
+              "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "node_modules/foundation-sites/scss",
+                "src/scss"
+              ]
+            },
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/what-input/dist/what-input.min.js",

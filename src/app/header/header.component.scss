@@ -1,0 +1,23 @@
+@import 'foundation';
+
+header {
+  background-image: url('./../../assets/hero.jpg');
+  background-size:cover;
+  background-position: center;
+  color: $white;
+  height: 328px;
+  padding: 2em;
+  display: flex;
+  .grid-x {
+    width: 100%;
+    .cell {
+      h1 {
+        font-size: 48px;
+      }
+      h2 {
+        font-weight: 300;
+        font-size: 22px;
+      }
+    }
+  }
+}
