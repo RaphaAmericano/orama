@@ -1,3 +1,4 @@
+import { FiltrosModule } from './filtros/filtros.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -19,6 +20,7 @@ import { HeaderComponent } from './header/header.component';
     BrowserModule,
     CoreModule,
     AppRoutingModule,
+    FiltrosModule,
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([])
