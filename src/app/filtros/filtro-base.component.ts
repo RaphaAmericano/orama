@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
 @Component({ template: '' })
-export abstract class FiltroBaseComponent implements OnInit {
+export abstract class FiltroBaseComponent<T> implements OnInit {
 
   public filtro: string;
   public formulario: FormGroup;

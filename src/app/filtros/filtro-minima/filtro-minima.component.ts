@@ -6,13 +6,14 @@ import * as actions from './../state/filtro.actions';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import 'foundation-sites';
 
-declare const foundation: any;
+// declare const foundation: any;
+
 @Component({
   selector: 'app-filtro-minima',
   templateUrl: './filtro-minima.component.html',
   styleUrls: ['./filtro-minima.component.scss']
 })
-export class FiltroMinimaComponent extends FiltroBaseComponent {
+export class FiltroMinimaComponent extends FiltroBaseComponent<FiltrosState> {
   slider: any;
   dataSlider: number = 50000;
   constructor(
@@ -43,7 +44,7 @@ export class FiltroMinimaComponent extends FiltroBaseComponent {
     const options: object = {
       end: this.dataSlider,
       initialStart: (this.dataSlider / 2 ),
-    }
+    };
     this.slider = new Foundation.Slider($('.slider'), options);
   }
 
