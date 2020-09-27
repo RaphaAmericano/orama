@@ -12,8 +12,6 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let fundo of fundos">
-      <app-fundo-detail [data]="fundo"></app-fundo-detail>
-    </tr>
+    <tr app-fundo-detail *ngFor="let fundo of fundos" [data]="fundo"></tr>
   </tbody>
 </table>

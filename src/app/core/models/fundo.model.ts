@@ -88,7 +88,8 @@ export class Fundo {
     m48: any,
     m24: any,
     m36: any,
-    month: string
+    month: string,
+    year: string
   };
   quota_date: string;
   simple_name: string;
@@ -110,4 +111,37 @@ export class Fundo {
   target_fund: any;
   tax_classification: string;
   volatility_12m: string;
+
+
+  get riscoColor(): string {
+    switch(this.specification.fund_risk_profile.score_range_order){
+      case 1:
+        return '#A2F0FA';
+      case 2:
+        return '#62F7DE';
+      case 3:
+        return '#93EB74';
+      case 4:
+        return '#B1F723';
+      case 5:
+        return '#DDF20F';
+      case 6:
+        return '#FFED11';
+      case 7:
+        return '#FCDC01';
+      case 8:
+        return '#FCBB03';
+      case 9:
+        return  '#FA8708';
+      case 10:
+        return '#FAFAFA';
+      case 11:
+        return '#F90F01';
+      case 12:
+        return '#B21810';
+      default:
+        return '#A2F0FA';
+    }
+  }
+
 }
