@@ -1,5 +1,3 @@
-import { EffectsModule } from '@ngrx/effects';
-
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 

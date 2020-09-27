@@ -1,1 +1,19 @@
-<p>lista-fundos works!</p>
+<table>
+  <thead>
+    <tr>
+      <th width="200">Fundo</th>
+      <th>Data da cota</th>
+      <th width="100">Mês(%)</th>
+      <th width="100">2016(%)</th>
+      <th width="100">12 M(%)</th>
+      <th width="100">Aplicação mínima(R$)</th>
+      <th width="100">Prazo de resgate</th>
+      <th width="100">Aplicar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let fundo of fundos">
+      <app-fundo-detail [data]="fundo"></app-fundo-detail>
+    </tr>
+  </tbody>
+</table>

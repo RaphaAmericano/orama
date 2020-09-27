@@ -11,7 +11,6 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { CoreModule } from './core/core.module';
 import { HeaderComponent } from './header/header.component';
-import { ListaFundosComponent } from './lista-fundos/lista-fundos.component';
 
 @NgModule({
   declarations: [
