@@ -10,19 +10,17 @@ import { concatMap, exhaustMap, map, mergeMap, switchMap, tap, toArray } from 'r
 })
 export class DatabaseService {
 
-  private immutableData$: Observable<any>;
-  public data$: Observable<any>;
+  private immutableData$: Observable<Fundo[]>;
+  public data$: Observable<Fundo[]>;
 
   constructor(private http: HttpClient ) {
-    this.immutableData$ = this.http.get(environment.api).pipe(
-      tap(val => console.log(val)),
+    this.immutableData$ = this.http.get<Fundo[]>(environment.api).pipe(
       switchMap( (fundos: object[] ) => {
         return fundos.map((fundo) => {
           return Object.assign(new Fundo(), fundo);
         });
       }),
       toArray(),
-      tap(val => console.log(val)),
       switchMap( (fundos: Fundo[]) => {
         return fundos.sort( (a, b) => {
             if (a.benchmark.id >= b.benchmark.id){

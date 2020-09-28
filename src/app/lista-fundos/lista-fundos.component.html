@@ -12,6 +12,16 @@
     </tr>
   </thead>
   <tbody>
-    <tr app-fundo-detail *ngFor="let fundo of fundos" [data]="fundo"></tr>
+    <ng-container *ngFor="let fundo of fundos; index as i">
+      <tr *ngIf="fundo.benchmark.id != fundos[i -1]?.benchmark.id">
+        <td colspan="8">
+          {{ fundo.benchmark.name }}
+        </td>
+      </tr>
+      <tr app-fundos-header class="tr-header" [data]="fundo" [index]="i" (click)="closeHideDetailComponent(fundo, i)">{{ fundo.full_name }}</tr>
+
+      <!-- <tr #datail></tr> -->
+      <tr #detail></tr>
+    </ng-container>
   </tbody>
 </table>

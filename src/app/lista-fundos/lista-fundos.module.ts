@@ -4,10 +4,12 @@ import { CommonModule } from '@angular/common';
 
 import { ListaFundosRoutingModule } from './lista-fundos-routing.module';
 import { FundoDetailComponent } from './fundo-detail/fundo-detail.component';
+import { FundosHeaderComponent } from './fundos-header/fundos-header.component';
+import { FundosLinhaComponent } from './fundos-linha/fundos-linha.component';
 
 
 @NgModule({
-  declarations: [ListaFundosComponent, FundoDetailComponent],
+  declarations: [ListaFundosComponent, FundoDetailComponent, FundosHeaderComponent],
   imports: [
     CommonModule,
     ListaFundosRoutingModule
