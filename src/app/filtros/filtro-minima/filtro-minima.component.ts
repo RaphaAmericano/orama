@@ -29,12 +29,10 @@ export class FiltroMinimaComponent extends FiltroBaseComponent<FiltrosState> {
   public ngOnInit(): void{
     super.ngOnInit();
     this.buildSlider();
-    //
     const el = document.querySelector('.slider-handle');
     this.sliderObserver = new MutationObserver(( mutations: MutationRecord[] ) => {
       mutations.forEach((mutation: MutationRecord) => {
-        console.log(mutation);
-        this.formulario.patchValue({ dado: mutation.target['ariaValueNow'] });
+        this.formulario.patchValue({ dado: +mutation.target['ariaValueNow'] });
       });
     });
     this.sliderObserver.observe(el, {
@@ -52,12 +50,6 @@ export class FiltroMinimaComponent extends FiltroBaseComponent<FiltrosState> {
     ).subscribe(
       val => this.store.dispatch(new actions.LoadFiltroMinima(val))
     );
-  }
-
-  sliderChange(valor): void {
-    this.formulario.patchValue({
-      dado: +valor.target.attributes['aria-valuenow'].value
-    });
   }
 
   protected buildSlider(): void {

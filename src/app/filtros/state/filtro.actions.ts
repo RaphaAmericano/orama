@@ -6,5 +6,9 @@ export class LoadFiltroMinima implements Action {
   constructor(public payload: { dado: any} ){}
 }
 
+export class LoadFiltroBusca implements Action {
+  readonly type = FiltrosActionTypes.LoadFiltroBusca;
+  constructor(public payload: { dado: string} ){}
+}
 
-export type FiltrosActions = LoadFiltroMinima;
+export type FiltrosActions = LoadFiltroMinima | LoadFiltroBusca;
