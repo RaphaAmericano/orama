@@ -3,7 +3,7 @@ import { environment } from './../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { concatMap, exhaustMap, map, mergeMap, switchMap, tap, toArray } from 'rxjs/operators';
+import { catchError, switchMap, tap, toArray } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -36,8 +36,8 @@ export class DatabaseService {
     this.data$ = this.immutableData$;
   }
 
-  // private handleError() {
-
-  // }
+  public getImmutableData(): Observable<Fundo[]>{
+    return this.immutableData$;
+  }
 
 }
