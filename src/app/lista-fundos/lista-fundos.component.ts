@@ -17,7 +17,7 @@ export class ListaFundosComponent implements OnInit, AfterViewInit {
   componentsRef: {index: number, componentRef: ComponentRef<any> }[] = new Array<{index: number, componentRef: ComponentRef<any>}>();
 
   @ViewChildren('detail', { read: ViewContainerRef }) entrys: QueryList<ViewContainerRef>;
-  
+
   constructor(
     private databaseService: DatabaseService,
     private resolver: ComponentFactoryResolver

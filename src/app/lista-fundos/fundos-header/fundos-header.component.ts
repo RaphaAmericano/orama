@@ -17,6 +17,6 @@ export class FundosHeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-
+    
   }
 }
