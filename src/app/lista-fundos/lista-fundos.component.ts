@@ -36,8 +36,16 @@ export class ListaFundosComponent implements OnInit, AfterViewInit {
 
   closeHideDetailComponent(fundo: Fundo, index: number): void {
     // TODO: corrigir o bug do index que nao esta adicionando corretamente
-
-    const existRef = this.componentsRef.find((refs, i ) => refs.index === i );
+    
+    // console.log(this.componentsRef);
+    // this.componentsRef.map(
+    //   ref => console.log(ref)
+    // )
+    const existRef = this.componentsRef.find((refs) => {
+      // console.log('ref index',refs.index)
+      // console.log('index :',index)
+      return refs.index === index
+    } );
     console.log(existRef);
     if(!existRef){
       const refDetail = this.entrys.find((refs, i) => i === index);
@@ -48,7 +56,19 @@ export class ListaFundosComponent implements OnInit, AfterViewInit {
       this.componentsRef.push( { index, componentRef } );
     } else {
       existRef.componentRef.destroy();
+      for(let i = 0; i < this.componentsRef.length; i++ ){
+        console.log(this.componentsRef[i]);
+        console.log(this.componentsRef[i].index === index);
+        if(this.componentsRef[i].index === index){
+          console.log(i);
+          this.componentsRef.splice(i, 1);
+        }
+      }
+      // const position = this.componentsRef.indexOf(existRef);
+      // console.log(position);
+      // this.componentsRef.splice(position, 1);
     }
+    console.log(this.componentsRef);
   }
 
 }
