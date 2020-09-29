@@ -3,7 +3,7 @@ import { FundoDetailComponent } from './fundo-detail/fundo-detail.component';
 import { Observable } from 'rxjs';
 import { Fundo } from './../core/models/fundo.model';
 import { DatabaseService } from './../core/services/database.service';
-import { AfterViewInit, Component, ComponentFactoryResolver, ComponentRef, OnInit, QueryList, ViewChildren, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, Component, ComponentFactoryResolver, ComponentRef, OnInit, QueryList, ViewChild, ViewChildren, ViewContainerRef } from '@angular/core';
 
 @Component({
   selector: 'app-lista-fundos',
@@ -17,8 +17,7 @@ export class ListaFundosComponent implements OnInit, AfterViewInit {
   componentsRef: {index: number, componentRef: ComponentRef<any> }[] = new Array<{index: number, componentRef: ComponentRef<any>}>();
 
   @ViewChildren('detail', { read: ViewContainerRef }) entrys: QueryList<ViewContainerRef>;
-
-
+  
   constructor(
     private databaseService: DatabaseService,
     private resolver: ComponentFactoryResolver
@@ -31,23 +30,14 @@ export class ListaFundosComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-
+    
   }
 
   closeHideDetailComponent(fundo: Fundo, index: number): void {
-    // TODO: corrigir o bug do index que nao esta adicionando corretamente
-    
-    // console.log(this.componentsRef);
-    // this.componentsRef.map(
-    //   ref => console.log(ref)
-    // )
     const existRef = this.componentsRef.find((refs) => {
-      // console.log('ref index',refs.index)
-      // console.log('index :',index)
-      return refs.index === index
+      return refs.index === index;
     } );
-    console.log(existRef);
-    if(!existRef){
+    if (!existRef){
       const refDetail = this.entrys.find((refs, i) => i === index);
       refDetail.clear();
       const factory = this.resolver.resolveComponentFactory(FundoDetailComponent);
@@ -56,19 +46,12 @@ export class ListaFundosComponent implements OnInit, AfterViewInit {
       this.componentsRef.push( { index, componentRef } );
     } else {
       existRef.componentRef.destroy();
-      for(let i = 0; i < this.componentsRef.length; i++ ){
-        console.log(this.componentsRef[i]);
-        console.log(this.componentsRef[i].index === index);
-        if(this.componentsRef[i].index === index){
-          console.log(i);
+      for (let i = 0; i < this.componentsRef.length; i++ ){
+        if (this.componentsRef[i].index === index){
           this.componentsRef.splice(i, 1);
+          break;
         }
       }
-      // const position = this.componentsRef.indexOf(existRef);
-      // console.log(position);
-      // this.componentsRef.splice(position, 1);
     }
-    console.log(this.componentsRef);
   }
-
 }

@@ -3,6 +3,7 @@
 <td>
   <div class="indicador-risco" [style.border-left-color]="data.riscoColor"></div>
   <p>{{ data.simple_name }}</p>
+  <p><small>{{ data.specification.fund_type }} | {{ data.specification.fund_class }}</small></p>
 </td>
 <td>{{ data.quota_date }}</td>
 <td>{{ data.profitabilities.month }}</td>
@@ -10,5 +11,9 @@
 <td>{{ data.profitabilities.m24 }}</td>
 <td>{{ data.operability.minimum_initial_application_amount }}</td>
 <td>{{ data.operability.application_quotation_days_str }}</td>
-<td><span class="badge primary"><i class="fi-wrench"></i></span></td>
+<td>
+  <span class="badge primary" [ngClass]="{ 'primary':  data.is_closed_to_capture, 'secondary': !data.is_closed_to_capture}" >
+    <i class="fi-wrench" [ngClass]="{'fi-wrench': data.is_closed_to_capture, 'fi-prohibited': !data.is_closed_to_capture}"></i>
+  </span> {{ data.is_closed_to_capture }}
+</td>
 

@@ -1,6 +1,20 @@
-<td colspan="4">
-  Grafico {{ index }}
-</td>
-<td colspan="4">
-  Dados: {{ data.benchmark.name }}
-</td>
+<tr>
+  <td colspan="4">
+    Grafico {{ index }}
+  </td>
+  <td colspan="4">
+    Dados: {{ data.benchmark.name }}
+    <div class="grid-x">
+      <div class="cell">
+        <ul>
+          <li>Cotização da aplicação: {{ data.operability.application_quotation_days_str }}<span class="badge secondary">?</span></li>
+          <li>Cotização da resgate: {{ data.operability.retrieval_quotation_days_str }}<span class="badge secondary">?</span></li>
+          <li>Liquidação do resgate: {{ data.operability.retrieval_liquidation_days_str }}({{ data.operability.retrieval_liquidation_days_type }})<span class="badge secondary">?</span></li>
+          <li>Taxa de administração: {{ data.fees.administration_fee }}</li>
+          <li>Conheça mais informações sobre este fundo</li>
+          <li><strong>CNPJ do fundo:</strong> {{ data.cnpj }}</li>
+        </ul>
+      </div>
+    </div>
+  </td>
+</tr>

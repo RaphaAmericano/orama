@@ -17,7 +17,7 @@ export abstract class FiltroBaseComponent<T> implements OnInit {
   }
   ngOnInit(): void {
     this.buildForm();
-    this.formulario.valueChanges.subscribe()
+    this.formulario.valueChanges.subscribe();
   }
 
   private buildForm(): void {

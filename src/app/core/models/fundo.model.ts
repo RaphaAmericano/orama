@@ -95,6 +95,18 @@ export class Fundo {
   simple_name: string;
   slug: string;
   specification: {
+    fund_class_anbima: string,
+    fund_mactro_strategy: {
+      explanation: string,
+      id: number,
+      name: string
+    },
+    fund_main_strategy: {
+      explanation: string,
+      fund_macro_strategy: number,
+      id: number,
+      name: string
+    },
     fund_suitability_profile: {
       name: string,
       score_range_order: number

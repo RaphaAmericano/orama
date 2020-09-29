@@ -1,0 +1,17 @@
+td {
+    &:first-child {
+    padding: 0;
+    p {
+      padding: 0.5rem 0.625rem 0.625rem;
+    }
+  }
+  .indicador-risco {
+    border-left-width: 5px;
+    border-left-style: solid;
+    min-height: 84px;
+    height: 100%;
+    margin-left: -1px;
+    width: 5px;
+    float: left;
+  }
+}

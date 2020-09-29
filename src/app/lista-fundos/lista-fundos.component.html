@@ -20,7 +20,7 @@
       </tr>
       <!-- Alterar para abrir de acordo com algum dado de id do fundo, assim podendo facilitar a precisao da busca na funcao -->
       <tr app-fundos-header class="tr-header" [data]="fundo" [index]="i" (click)="closeHideDetailComponent(fundo, i)">{{ fundo.full_name }}</tr>
-      <tr #detail></tr>
+      <ng-template #detail></ng-template>
     </ng-container>
   </tbody>
 </table>
