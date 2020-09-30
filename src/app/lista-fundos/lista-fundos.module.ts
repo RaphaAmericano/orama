@@ -7,13 +7,15 @@ import { FundoDetailComponent } from './fundo-detail/fundo-detail.component';
 import { FundosHeaderComponent } from './fundos-header/fundos-header.component';
 import { StoreModule } from '@ngrx/store';
 import { reducer } from './state/fundo.reducer';
-
+import { EffectsModule } from '@ngrx/effects';
+import { FundoEffects } from './state/fundo.effects';
 @NgModule({
   declarations: [ListaFundosComponent, FundoDetailComponent, FundosHeaderComponent],
   imports: [
     CommonModule,
     ListaFundosRoutingModule,
-    StoreModule.forFeature('fundos', reducer )
+    StoreModule.forFeature('fundos', reducer ),
+    EffectsModule.forFeature([FundoEffects])
   ],
   exports: [ListaFundosComponent]
 })

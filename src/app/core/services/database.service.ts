@@ -40,4 +40,8 @@ export class DatabaseService {
     return this.immutableData$;
   }
 
+  public getData(): Observable<Fundo[]> {
+    return this.data$;
+  }
+
 }

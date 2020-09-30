@@ -4,7 +4,10 @@ import { Observable } from 'rxjs';
 import { Fundo } from './../core/models/fundo.model';
 import { DatabaseService } from './../core/services/database.service';
 import { AfterViewInit, Component, ComponentFactoryResolver, ComponentRef, OnInit, QueryList, ViewChild, ViewChildren, ViewContainerRef } from '@angular/core';
-
+import { select, State, Store } from '@ngrx/store';
+import { FundoState } from './state/fundo.state.app';
+import * as fromFundo from './state/index';
+import * as actions from './state/fundo.actions';
 @Component({
   selector: 'app-lista-fundos',
   templateUrl: './lista-fundos.component.html',
@@ -20,13 +23,23 @@ export class ListaFundosComponent implements OnInit, AfterViewInit {
 
   constructor(
     private databaseService: DatabaseService,
-    private resolver: ComponentFactoryResolver
+    private resolver: ComponentFactoryResolver,
+    private store: Store<FundoState>
     ) { }
 
-  ngOnInit(): void {
-    this.databaseService.data$.subscribe(
-      res => this.fundos = res
-    );
+    ngOnInit(): void {
+      this.store.dispatch(new actions.LoadFundos());
+      this.store.pipe(select(fromFundo.getFundos)).subscribe(
+        fundos => this.fundos = fundos
+      )
+    // this.databaseService.data$.subscribe(
+    //   res => {
+    //     this.store.dispatch(new actions.LoadFundos());
+    //     this.fundos = res
+    //     // this.store.dispatch(new actions.LoadFundosBase(res));
+    //     // this.store.dispatch(new actions.LoadFundos(res));
+    //   }
+    // );
   }
 
   ngAfterViewInit(): void {
