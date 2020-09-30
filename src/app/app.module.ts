@@ -11,7 +11,8 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { CoreModule } from './core/core.module';
 import { HeaderComponent } from './header/header.component';
-
+import { reducer } from './state/fundo.reducer';
+import { FundoEffects } from './state/fundo.effects';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,9 +24,10 @@ import { HeaderComponent } from './header/header.component';
     AppRoutingModule,
     FiltrosModule,
     ListaFundosModule,
-    StoreModule.forRoot({}, {}),
+    // StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({ 'fundos' : reducer }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([FundoEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

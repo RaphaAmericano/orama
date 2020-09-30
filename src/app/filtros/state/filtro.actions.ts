@@ -9,9 +9,14 @@ export class NewFiltroMinima implements Action {
   constructor(public payload: { dado: any } ){}
 }
 
+export class ErroFiltroMinima implements Action {
+  readonly type = FiltrosActionTypes.ErroFiltroMinima;
+  constructor(public payload: any ) {}
+}
+
 export class LoadFiltroBusca implements Action {
   readonly type = FiltrosActionTypes.LoadFiltroBusca;
   constructor(public payload: { dado: string } ){}
 }
 
-export type FiltrosActions = LoadFiltroMinima | NewFiltroMinima | LoadFiltroBusca;
+export type FiltrosActions = LoadFiltroMinima | NewFiltroMinima | ErroFiltroMinima | LoadFiltroBusca;

@@ -11,4 +11,4 @@ const getFiltrosFeatureState = createFeatureSelector<FiltrosState>('filtros');
 export const getFiltros = createSelector(
   getFiltrosFeatureState,
   state => state
-)
+);

@@ -22,7 +22,6 @@ export class FiltroBuscaComponent extends FiltroBaseComponent<FiltrosState> {
       distinctUntilChanged()
     ).subscribe(
       res => {
-        console.log(res)
         this.store.dispatch(new LoadFiltroBusca(res));
       }
     )

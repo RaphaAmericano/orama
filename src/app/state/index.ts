@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import * as fromRoot from '../../state/app.state';
+import * as fromRoot from './app.state';
 import { FundoState } from './fundo.state.app';
 
 export interface State extends fromRoot.State {

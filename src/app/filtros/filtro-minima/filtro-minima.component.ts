@@ -1,6 +1,6 @@
 import { Store } from '@ngrx/store';
 import { FiltrosState } from './../state/filtro.state.app';
-import { Component, HostListener, Injector } from '@angular/core';
+import { AfterContentInit, Component, HostListener, Injector } from '@angular/core';
 import { FiltroBaseComponent } from '../filtro-base.component';
 import * as actions from './../state/filtro.actions';
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
@@ -16,7 +16,7 @@ import 'foundation-sites';
 export class FiltroMinimaComponent extends FiltroBaseComponent<FiltrosState> {
   slider: any;
   dataSlider: number = 50000;
-
+  dataSteps: number[] = [ 0, 1, 100, 500, 1000, 2000, 2500, 3000, 5000, 10000, 15000, 20000, 25000, 30000, 50000, 100000, 250000, 500000];
   private sliderObserver: MutationObserver;
 
 
@@ -32,7 +32,7 @@ export class FiltroMinimaComponent extends FiltroBaseComponent<FiltrosState> {
     const el = document.querySelector('.slider-handle');
     this.sliderObserver = new MutationObserver(( mutations: MutationRecord[] ) => {
       mutations.forEach((mutation: MutationRecord) => {
-        this.formulario.patchValue({ dado: +mutation.target['ariaValueNow'] });
+        this.formulario.setValue({ dado: +mutation.target['ariaValueNow'] });
       });
     });
     this.sliderObserver.observe(el, {
@@ -43,10 +43,11 @@ export class FiltroMinimaComponent extends FiltroBaseComponent<FiltrosState> {
       characterData: false
     });
 
-    this.formulario.patchValue({ dado: (this.dataSlider / 2) });
+    // todo: descobrir o porque do bug nessa funcao de patchValue
+    // this.formulario.get('dado').patchValue(this.dataSlider / 2);
+
     this.formulario.valueChanges.pipe(
       debounceTime(500), distinctUntilChanged(),
-      tap((val) => console.log(val))
     ).subscribe(
       val => this.store.dispatch(new actions.NewFiltroMinima(val))
     );
@@ -54,6 +55,10 @@ export class FiltroMinimaComponent extends FiltroBaseComponent<FiltrosState> {
 
   protected buildSlider(): void {
     const options: object = {
+      // start: this.dataSteps[0],
+      // end: this.dataSteps[this.dataSteps.length -1 ],
+      // step: this.dataSteps.length, 
+      // initialStart: this.dataSteps[(this.dataSteps.length -1) / 2 ],
       end: this.dataSlider,
       initialStart: (this.dataSlider / 2 ),
     };

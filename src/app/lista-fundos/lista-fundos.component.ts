@@ -1,13 +1,15 @@
 import { FundosHeaderComponent } from './fundos-header/fundos-header.component';
 import { FundoDetailComponent } from './fundo-detail/fundo-detail.component';
 import { Observable } from 'rxjs';
+import { map, mergeMap, switchMap, tap } from 'rxjs/operators';
 import { Fundo } from './../core/models/fundo.model';
 import { DatabaseService } from './../core/services/database.service';
-import { AfterViewInit, Component, ComponentFactoryResolver, ComponentRef, OnInit, QueryList, ViewChild, ViewChildren, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, Component, ComponentFactoryResolver, ComponentRef, OnInit, QueryList, ViewChildren, ViewContainerRef } from '@angular/core';
 import { select, State, Store } from '@ngrx/store';
-import { FundoState } from './state/fundo.state.app';
-import * as fromFundo from './state/index';
-import * as actions from './state/fundo.actions';
+import { FundoState } from './../state/fundo.state.app';
+import * as fromFundo from './../state/index';
+import * as fromFiltros from '../filtros/state/index';
+import * as actions from '../state/fundo.actions';
 @Component({
   selector: 'app-lista-fundos',
   templateUrl: './lista-fundos.component.html',
@@ -17,7 +19,7 @@ export class ListaFundosComponent implements OnInit, AfterViewInit {
 
   fundos: Fundo[];
 
-  componentsRef: {index: number, componentRef: ComponentRef<any> }[] = new Array<{index: number, componentRef: ComponentRef<any>}>();
+  componentsRef: { index: number, componentRef: ComponentRef<any> }[] = new Array<{index: number, componentRef: ComponentRef<any>}>();
 
   @ViewChildren('detail', { read: ViewContainerRef }) entrys: QueryList<ViewContainerRef>;
 
@@ -31,15 +33,21 @@ export class ListaFundosComponent implements OnInit, AfterViewInit {
       this.store.dispatch(new actions.LoadFundos());
       this.store.pipe(select(fromFundo.getFundos)).subscribe(
         fundos => this.fundos = fundos
+      );
+      this.store.pipe(select(fromFiltros.getFiltros)).subscribe(
+        filtros => {
+          this.store.pipe(
+            select(fromFundo.getFundosBase),
+            map((fundos: Fundo[]) => {
+              return fundos
+                .filter((fundo: Fundo) => +fundo.operability.minimum_initial_application_amount > filtros.minima )
+                // .filter((fundo: Fundo) => fundo.simple_name.indexOf(filtros.busca) >= 0 )
+              })
+            ).subscribe(
+            res => this.store.dispatch(new actions.SaveFundos(res) )
+          );
+        }
       )
-    // this.databaseService.data$.subscribe(
-    //   res => {
-    //     this.store.dispatch(new actions.LoadFundos());
-    //     this.fundos = res
-    //     // this.store.dispatch(new actions.LoadFundosBase(res));
-    //     // this.store.dispatch(new actions.LoadFundos(res));
-    //   }
-    // );
   }
 
   ngAfterViewInit(): void {

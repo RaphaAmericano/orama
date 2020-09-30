@@ -16,6 +16,7 @@ export function reducer(state = initialState, action: FundoActions ): FundoState
             }
 
         case FundoActionTypes.SaveFundos:
+            console.log(action.type)
             return {
                 ...state,
                 fundos: action.payload
