@@ -30,6 +30,7 @@ export class FiltroMinimaComponent extends FiltroBaseComponent<FiltrosState> {
     super.ngOnInit();
     this.buildSlider();
     const el = document.querySelector('.slider-handle');
+
     this.sliderObserver = new MutationObserver(( mutations: MutationRecord[] ) => {
       mutations.forEach((mutation: MutationRecord) => {
         this.formulario.setValue({ dado: +mutation.target['ariaValueNow'] });
@@ -57,7 +58,7 @@ export class FiltroMinimaComponent extends FiltroBaseComponent<FiltrosState> {
     const options: object = {
       // start: this.dataSteps[0],
       // end: this.dataSteps[this.dataSteps.length -1 ],
-      // step: this.dataSteps.length, 
+      step: 1000, 
       // initialStart: this.dataSteps[(this.dataSteps.length -1) / 2 ],
       end: this.dataSlider,
       initialStart: (this.dataSlider / 2 ),

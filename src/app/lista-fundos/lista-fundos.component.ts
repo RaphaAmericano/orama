@@ -39,18 +39,15 @@ export class ListaFundosComponent implements OnInit, AfterViewInit {
           this.store.pipe(
             select(fromFundo.getFundosBase),
             map((fundos: Fundo[]) => {
+              if(!fundos){
+                return;
+              }
               return fundos
                 .filter((fundo: Fundo) => +fundo.operability.minimum_initial_application_amount > filtros.minima )
                 .filter((fundo: Fundo) => {
                   const strSearch = filtros.busca.toLowerCase();
-                  if(fundo.simple_name.toLowerCase().indexOf(strSearch) >= 0 ){
-                    console.log(fundo.simple_name.toLowerCase().indexOf(strSearch) >= 0  )
-                  } 
-                  if(fundo.simple_name.toLowerCase().indexOf(strSearch) >= 0){
-                      console.log(fundo.simple_name.toLowerCase().indexOf(strSearch) >= 0);
-                  }
-                  return fundo.simple_name.toLowerCase().indexOf(strSearch) >= 0
-                } )
+                  return fundo.simple_name.toLowerCase().indexOf(strSearch) >= 0;
+                } );
               })
             ).subscribe(
             res => this.store.dispatch(new actions.SaveFundos(res) )

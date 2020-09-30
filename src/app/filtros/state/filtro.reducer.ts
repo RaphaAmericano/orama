@@ -3,7 +3,7 @@ import { FiltrosState } from './filtro.state.app';
 import { FiltrosActions } from './filtro.actions';
 const initialState: FiltrosState = {
   minima: null,
-  busca: null,
+  busca: '',
   erro: ''
 }
 
