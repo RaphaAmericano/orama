@@ -48,7 +48,7 @@ export class FiltroMinimaComponent extends FiltroBaseComponent<FiltrosState> {
       debounceTime(500), distinctUntilChanged(),
       tap((val) => console.log(val))
     ).subscribe(
-      val => this.store.dispatch(new actions.LoadFiltroMinima(val))
+      val => this.store.dispatch(new actions.NewFiltroMinima(val))
     );
   }
 

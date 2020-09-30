@@ -9,7 +9,7 @@ const initialState: FiltrosState = {
 export function reducer(state = initialState, action: FiltrosActions ): FiltrosState {
 
   switch (action.type){
-    case FiltrosActionTypes.LoadFiltroMinima:
+    case FiltrosActionTypes.NewFiltroMinima:
       return {
         ...state,
         minima: action.payload.dado

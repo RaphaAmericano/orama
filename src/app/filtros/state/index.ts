@@ -2,7 +2,7 @@ import { FiltrosState } from './filtro.state.app';
 import * as fromRoot from '../../state/app.state';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-export interface State extends fromRoot.AppState{
+export interface State extends fromRoot.State{
   filtros: FiltrosState;
 }
 

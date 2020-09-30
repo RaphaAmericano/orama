@@ -3,12 +3,15 @@ import { Action } from '@ngrx/store';
 
 export class LoadFiltroMinima implements Action {
   readonly type = FiltrosActionTypes.LoadFiltroMinima;
-  constructor(public payload: { dado: any} ){}
+}
+export class NewFiltroMinima implements Action {
+  readonly type = FiltrosActionTypes.NewFiltroMinima;
+  constructor(public payload: { dado: any } ){}
 }
 
 export class LoadFiltroBusca implements Action {
   readonly type = FiltrosActionTypes.LoadFiltroBusca;
-  constructor(public payload: { dado: string} ){}
+  constructor(public payload: { dado: string } ){}
 }
 
-export type FiltrosActions = LoadFiltroMinima | LoadFiltroBusca;
+export type FiltrosActions = LoadFiltroMinima | NewFiltroMinima | LoadFiltroBusca;
