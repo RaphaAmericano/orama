@@ -9,15 +9,16 @@
   </p>
   <p><small>{{ data.specification.fund_type }} | {{ data.specification.fund_class }}</small></p>
 </td>
-<td>{{ data.quota_date }}</td>
-<td>{{ data.profitabilities.month }}</td>
-<td>{{ data.volatility_12m }}</td>
-<td>{{ data.profitabilities.m24 }}</td>
+<td>{{ data.quota_date | date: 'dd/MM/yyyy'}}</td>
+<td>{{ data.profitabilitiesMouthNumber | number: '2.1-2' }}</td>
+<td>{{ data.volatility12Number | number: '2.1-2' }}</td>
+<td>{{ data.profitabilities24Number | number: '2.1-2' }}</td>
 <td>{{ data.operability.minimum_initial_application_amount }}</td>
 <td>{{ data.operability.application_quotation_days_str }}</td>
-<td>
-  <span class="badge primary" [ngClass]="{ 'primary':  data.is_closed_to_capture, 'secondary': !data.is_closed_to_capture}" >
-    <i class="fi-wrench" [ngClass]="{'fi-wrench': data.is_closed_to_capture, 'fi-prohibited': !data.is_closed_to_capture}"></i>
-  </span> 
+<td class="td-aplicar">
+  <!-- <span class="badge primary" [ngClass]="{ 'primary':  data.is_closed_to_capture, 'secondary': !data.is_closed_to_capture}" > -->
+    <i [ngClass]="{'icon-reply': data.is_closed_to_capture, 'fi-prohibited': !data.is_closed_to_capture}"></i>
+  <!-- </span>  -->
+    <!-- <object class="arrow-up" type="image/svg+xml" data="../../../assets/up-arrow.svg" ></object> -->
 </td>
 

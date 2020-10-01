@@ -1,7 +1,7 @@
 <table>
   <thead>
     <tr>
-      <th width="200">Fundo</th>
+      <th width="250">Fundo</th>
       <th>Data da cota</th>
       <th width="100">Mês(%)</th>
       <th width="100">2016(%)</th>
@@ -26,7 +26,12 @@
         </td>
       </tr>
       <!-- Alterar para abrir de acordo com algum dado de id do fundo, assim podendo facilitar a precisao da busca na funcao -->
-      <tr app-fundos-header class="tr-header" [data]="fundo" [index]="i" (click)="closeHideDetailComponent(fundo, i)">{{ fundo.full_name }}</tr>
+      <tr app-fundos-header 
+          class="tr-header" 
+          [ngClass]="fundo.is_closed_to_capture ? '' : 'close-to-capture' "
+          [data]="fundo" 
+          [index]="i" 
+          (click)="closeHideDetailComponent(fundo, i)">{{ fundo.full_name }}</tr>
       <ng-template #detail></ng-template>
     </ng-container>
   </tbody>

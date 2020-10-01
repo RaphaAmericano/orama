@@ -25,16 +25,19 @@ export class FundosHeaderComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    this.buildTooltip();
+  }
+
+  private buildTooltip(): void {
     const this$ = this;
     const el = $(this$.tooltip.nativeElement);
-
     const options = {
-      
-    fadeInDuration: 500,
-    fadeOutDuration: 500,
-    disableHover: false,
-    tipText: 'Fundo para investidor qualificado',
+      fadeInDuration: 500,
+      fadeOutDuration: 500,
+      disableHover: false,
+      tipText: 'Fundo para investidor qualificado',
     };
     new Foundation.Tooltip(el, options);
   }
+
 }

@@ -84,10 +84,11 @@ export class Fundo {
   performance_audios: any[];
   performance_videos: any[];
   profitabilities: {
-    m60: any,
-    m48: any,
+    m12: any,
     m24: any,
     m36: any,
+    m48: any,
+    m60: any,
     month: string,
     year: string
   };
@@ -123,6 +124,18 @@ export class Fundo {
   target_fund: any;
   tax_classification: string;
   volatility_12m: string;
+
+  get profitabilitiesMouthNumber(): number {
+    return +this.profitabilities.month;
+  }
+
+  get profitabilities24Number(): number {
+    return +this.profitabilities.m24;
+  }
+
+  get volatility12Number(): number {
+    return +this.volatility_12m;
+  }
 
 
   get riscoColor(): string {

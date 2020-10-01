@@ -1,6 +1,6 @@
 @import 'foundation';
 
-$table_font_size: 14px;
+$table_font_size: 13px;
 $table_font_color: #464646;
 table {
   border-top: 1px solid $white;
@@ -27,7 +27,10 @@ table {
       font-size: $table_font_size;
     }
   }
-  // .tr-header {
-  //   cursor: pointer;
-  // }
+  .tr-header {
+    cursor: pointer;
+    &.close-to-capture {
+      color: $medium-gray;
+    }
+  }
 }

@@ -1,11 +1,35 @@
 @import 'foundation';
+
+$font_size: 13px;
 td {
+  font-size: $font_size;
+    &.td-aplicar {
+      font-size: $font_size * 2;
+      i {
+        &.fi-prohibited {
+          color: $light-gray;
+        }
+        &.icon-reply {
+          color: $white;
+          font-size: $font_size;
+          width: 1rem;
+          height: 1rem;
+          padding: 4px;
+          box-shadow: 0px 2px 4px $medium-gray;
+          border-radius: 50%;
+          background-color:#119c9f;
+          &:before {
+            transform: rotate(90deg);
+          }
+        } 
+      }
+
+    }
     &:first-child {
     padding: 0;
     p {
       padding: 0 0.625rem 0 0.625rem;
       margin-bottom: 0;
-      font-size: 14px;
       small {
         color: $medium-gray;
       }
@@ -17,10 +41,13 @@ td {
       padding: 1px 5px;
       font-size: 10px;
       &.fi-star{
-        background-color: #639A34;
+        background-color: #639d31;
       }
       &.fi-check{
         background-color: $medium-gray;
+      }
+      &.fi-wrench {
+        background-color: aqua;
       }
     }
   }
