@@ -1,15 +1,33 @@
-
+@import 'foundation';
 td {
     &:first-child {
     padding: 0;
     p {
-      padding: 0.5rem 0.625rem 0.625rem;
+      padding: 0 0.625rem 0 0.625rem;
+      margin-bottom: 0;
+      font-size: 14px;
+      small {
+        color: $medium-gray;
+      }
+    }
+    i {
+      margin: 0 2px;
+      color: $white;
+      border-radius: 12px;
+      padding: 1px 5px;
+      font-size: 10px;
+      &.fi-star{
+        background-color: #639A34;
+      }
+      &.fi-check{
+        background-color: $medium-gray;
+      }
     }
   }
   .indicador-risco {
     border-left-width: 5px;
     border-left-style: solid;
-    min-height: 84px;
+    min-height: 70px;
     height: 100%;
     margin-left: 0;
     width: 5px;

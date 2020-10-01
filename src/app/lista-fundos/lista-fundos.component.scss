@@ -20,13 +20,14 @@ table {
       font-weight: bold;
     }
     .sub-title {
+      background-color: #EEEEEE;
       text-transform: uppercase;
     }
     .sub-title-2 {
       font-size: $table_font_size;
     }
   }
-  .tr-header {
-    cursor: pointer;
-  }
+  // .tr-header {
+  //   cursor: pointer;
+  // }
 }
