@@ -13,9 +13,16 @@
   </thead>
   <tbody>
     <ng-container *ngFor="let fundo of fundos; index as i">
-      <tr *ngIf="fundo.benchmark.id != fundos[i -1]?.benchmark.id">
+      <tr *ngIf="fundo.benchmark.id != fundos[i -1]?.benchmark.id"
+          class="sub-title">
         <td colspan="8">
           {{ fundo.benchmark.name }}
+        </td>
+      </tr>
+      <tr *ngIf="fundo.specification.fund_type != fundos[i -1]?.specification.fund_type"
+          class="sub-title-2" >
+        <td colspan="8">
+          {{ fundo.specification.fund_type }}
         </td>
       </tr>
       <!-- Alterar para abrir de acordo com algum dado de id do fundo, assim podendo facilitar a precisao da busca na funcao -->

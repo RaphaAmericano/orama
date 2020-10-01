@@ -1,3 +1,32 @@
-.tr-header {
-  cursor: pointer;
+@import 'foundation';
+
+$table_font_size: 14px;
+$table_font_color: #464646;
+table {
+  border-top: 1px solid $white;
+  background-color: $white;
+  color: $table_font_color;
+  thead {
+    border: 0;
+    background-color: transparent;
+    font-size: $table_font_size;
+    color: $table_font_color;
+    font-weight: 400;
+  }
+  tbody {
+    border: 0;
+    .sub-title,.sub-title-2{
+      font-size: $table_font_size;
+      font-weight: bold;
+    }
+    .sub-title {
+      text-transform: uppercase;
+    }
+    .sub-title-2 {
+      font-size: $table_font_size;
+    }
+  }
+  .tr-header {
+    cursor: pointer;
+  }
 }
