@@ -1,0 +1,35 @@
+@import 'foundation';
+
+.cell {
+    position: relative;
+    i {
+        top: 0;
+        right: 15px;
+        font-size: 24px;
+        position: absolute;
+    }
+    input {
+        font-size: 13px;
+        border: none;
+        box-shadow: none;
+        border-bottom: 1px solid $black;
+        :placeholder-shown,
+        &::-webkit-input-placeholder, 
+        &::-moz-placeholder,
+        &:-ms-input-placeholder,
+        &:-moz-placeholder,
+        &::placeholder{
+            opacity: 1;
+            color: $black;
+        }
+        &:focus, &:active {
+            border: none;
+            box-shadow: none;
+            border-bottom: 1px solid $black;
+            &+ i {
+                display: none;
+                transition: 0.5s;
+            }
+        }
+    }
+}

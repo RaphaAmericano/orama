@@ -4,7 +4,6 @@
   <div class="indicador-risco" [style.border-left-color]="data.riscoColor"></div>
   <p>{{ data.simple_name }}
     <i data-tooltip data-position="top" tabindex="1" title="Fundo para investidor qualificado" class="fi-star" #tooltip></i>
-    <!-- <i class="fi-star" #tooltip></i> -->
     <i class="fi-check"></i>
   </p>
   <p><small>{{ data.specification.fund_type }} | {{ data.specification.fund_class }}</small></p>
@@ -14,11 +13,8 @@
 <td>{{ data.volatility12Number | number: '2.1-2' }}</td>
 <td>{{ data.profitabilities24Number | number: '2.1-2' }}</td>
 <td>{{ data.operability.minimum_initial_application_amount }}</td>
-<td>{{ data.operability.application_quotation_days_str }}</td>
+<td>{{ data.operability.retrieval_quotation_days_str }}</td>
 <td class="td-aplicar">
-  <!-- <span class="badge primary" [ngClass]="{ 'primary':  data.is_closed_to_capture, 'secondary': !data.is_closed_to_capture}" > -->
     <i [ngClass]="{'icon-reply': data.is_closed_to_capture, 'fi-prohibited': !data.is_closed_to_capture}"></i>
-  <!-- </span>  -->
-    <!-- <object class="arrow-up" type="image/svg+xml" data="../../../assets/up-arrow.svg" ></object> -->
 </td>
 

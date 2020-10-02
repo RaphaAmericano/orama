@@ -1,0 +1,14 @@
+@import 'foundation';
+.cell {
+    &.filtro {
+        background-color: #FAFAFA;
+        padding: 30px 30px;
+    }
+    &.infos {
+        margin-top: 15px;
+        p {
+            font-size: 13px;
+            color: $medium-gray;
+        }
+    }
+}

@@ -1,9 +1,12 @@
 <form [formGroup]="formulario">
-  <div class="grid-container">
-    <div class="grid-x grid-padding-x">
-      <div class="small-12 cell">
-        <input formControlName="dado" type="search" placeholder="Busca fundo por nome">
+    <div class="grid-x">
+      <div class="small-12 medium-6 cell">
+        <input 
+        formControlName="dado" 
+        type="search" 
+        placeholder="Busca fundo por nome">
+        <i class="fi-magnifying-glass"></i>
       </div>
+      <div class="small-12 medium-6 cell"></div>
     </div>
-  </div>
 </form>
