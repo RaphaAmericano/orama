@@ -1,5 +1,5 @@
 import { Fundo } from './../../core/models/fundo.model';
-import { Component, OnInit, Input, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, AfterViewInit, ElementRef, AfterViewChecked, AfterContentChecked, AfterContentInit } from '@angular/core';
 
 @Component({
   selector: '[app-fundos-header]',
@@ -16,9 +16,7 @@ export class FundosHeaderComponent implements OnInit, AfterViewInit {
   @Input()
   index: number;
 
-  constructor() { 
-    
-  }
+  constructor() { }
 
   ngOnInit(): void {
    
@@ -29,15 +27,7 @@ export class FundosHeaderComponent implements OnInit, AfterViewInit {
   }
 
   private buildTooltip(): void {
-    const this$ = this;
-    const el = $(this$.tooltip.nativeElement);
-    const options = {
-      fadeInDuration: 500,
-      fadeOutDuration: 500,
-      disableHover: false,
-      tipText: 'Fundo para investidor qualificado',
-    };
-    new Foundation.Tooltip(el, options);
+    $(this.tooltip.nativeElement).foundation();
   }
 
 }

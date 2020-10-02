@@ -7,10 +7,52 @@
   "ascent": 850,
   "glyphs": [
     {
+      "uid": "9bd60140934a1eb9236fd7a8ab1ff6ba",
+      "css": "spin4",
+      "code": 59444,
+      "src": "fontelico"
+    },
+    {
+      "uid": "2a6740fc2f9d0edea54205963f662594",
+      "css": "spin3",
+      "code": 59442,
+      "src": "fontelico"
+    },
+    {
       "uid": "77dc6351a75ce82023a99696c9dd1ed3",
       "css": "reply",
       "code": 59392,
       "src": "websymbols"
+    },
+    {
+      "uid": "17ebadd1e3f274ff0205601eef7b9cc4",
+      "css": "help-circled",
+      "code": 59393,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "ce3cf091d6ebd004dd0b52d24074e6e3",
+      "css": "help",
+      "code": 61736,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "72109d2fb3088d0e66ea6a9204297651",
+      "css": "spin1",
+      "code": 59440,
+      "src": "fontelico"
+    },
+    {
+      "uid": "j6xzwioffey3gxe90yx3ie56j5dlt902",
+      "css": "block",
+      "code": 59394,
+      "src": "typicons"
+    },
+    {
+      "uid": "7cf0c6fefa5327473dec91427434ae26",
+      "css": "block-1",
+      "code": 59395,
+      "src": "iconic"
     }
   ]
 }

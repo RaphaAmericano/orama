@@ -1,10 +1,13 @@
 @import 'foundation';
 
 main {
+    margin-top: 24px;
     .cell {
         margin-bottom: 2rem;
-        box-shadow: 2px 2px 1px $dark-gray;
+        box-shadow: 0 2px 1px $medium-gray;
         border-radius: 4px;
+        border-left: 1px solid $medium-gray;
+        border-right: 1px solid $medium-gray;
         border-top: 4px solid $white;
         border-bottom: 4px solid $white;
     }

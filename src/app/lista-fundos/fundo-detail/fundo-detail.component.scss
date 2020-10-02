@@ -1,11 +1,30 @@
+@import 'foundation';
 // ::slotted
 :host {
   display: contents !important;
 }
 
-td {
-  ul {
-    list-style-type: none;
-    margin: 0;
+tr {
+  box-shadow: inset 0 2px 2px $medium-gray;
+  td {
+    .grid-x {
+      height: 392px;
+      font-size: 13px;
+      font-weight: 300;
+      ul {
+        list-style-type: none;
+        margin: 0;
+        li {
+          margin-bottom: 8px;
+          i {
+            color: $medium-gray;
+          }   
+        }
+      }
+      a {
+        text-decoration: underline;
+        color: $dark-gray;
+      }
+    }
   }
 }

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map, mergeMap, switchMap, tap } from 'rxjs/operators';
 import { Fundo } from './../core/models/fundo.model';
 import { DatabaseService } from './../core/services/database.service';
-import { AfterViewInit, Component, ComponentFactoryResolver, ComponentRef, OnInit, QueryList, ViewChildren, ViewContainerRef } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, ComponentFactoryResolver, ComponentRef, OnInit, QueryList, ViewChildren, ViewContainerRef } from '@angular/core';
 import { select, State, Store } from '@ngrx/store';
 import { FundoState } from './../state/fundo.state.app';
 import * as fromFundo from './../state/index';
@@ -15,7 +15,7 @@ import * as actions from '../state/fundo.actions';
   templateUrl: './lista-fundos.component.html',
   styleUrls: ['./lista-fundos.component.scss']
 })
-export class ListaFundosComponent implements OnInit, AfterViewInit {
+export class ListaFundosComponent implements OnInit {
 
   fundos: Fundo[];
 
@@ -54,10 +54,6 @@ export class ListaFundosComponent implements OnInit, AfterViewInit {
           );
         }
       )
-  }
-
-  ngAfterViewInit(): void {
-    
   }
 
   closeHideDetailComponent(fundo: Fundo, index: number): void {

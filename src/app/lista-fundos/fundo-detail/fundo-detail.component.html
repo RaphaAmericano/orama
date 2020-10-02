@@ -1,19 +1,26 @@
 <tr>
-  <td colspan="4">
-    Grafico {{ index }}
+  <td colspan="3">
+
   </td>
-  <td colspan="4">
-    Dados: {{ data.benchmark.name }}
-    <div class="grid-x">
-      <div class="cell">
-        <ul>
-          <li>Cotização da aplicação: {{ data.operability.application_quotation_days_str }}<span class="badge secondary">?</span></li>
-          <li>Cotização da resgate: {{ data.operability.retrieval_quotation_days_str }}<span class="badge secondary">?</span></li>
-          <li>Liquidação do resgate: {{ data.operability.retrieval_liquidation_days_str }}({{ data.operability.retrieval_liquidation_days_type }})<span class="badge secondary">?</span></li>
-          <li>Taxa de administração: {{ data.fees.administration_fee }}</li>
-          <li>Conheça mais informações sobre este fundo</li>
-          <li><strong>CNPJ do fundo:</strong> {{ data.cnpj }}</li>
-        </ul>
+  <td colspan="5">
+    <div class="grid-container">
+      <div class="grid-x grid-padding-y">
+        <div class="cell flex-container flex-dir-column">
+          <div class="flex-child-auto">
+            <ul>
+              <li><b>Cotização da aplicação:</b> {{ data.operability.application_quotation_days_str }}<i class="icon-help-circled"></i></li>
+              <li><b>Cotização da resgate:</b> {{ data.operability.retrieval_quotation_days_str }}<i class="icon-help-circled"></i></li>
+              <li><b>Liquidação do resgate:</b> {{ data.operability.retrieval_liquidation_days_str }}({{ data.operability.retrieval_liquidation_days_type }}) <i class="icon-help-circled"></i></li>
+              <li><b>Taxa de administração:</b> {{ data.fees.administration_fee }}</li>
+            </ul>
+          </div>
+          <div class="flex-child-auto">
+            <a>Conheça mais informações sobre este fundo</a>
+          </div>
+          <div class="flex-child-shrink">
+            <b>CNPJ do fundo:</b> {{ data.cnpj }}
+          </div>
+        </div>  
       </div>
     </div>
   </td>
