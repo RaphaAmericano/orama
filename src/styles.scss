@@ -18,3 +18,8 @@ html, body {
   margin: 0;
   background-color: #EEE;
 }
+body {
+  .tooltip-info {
+    background-color: $white;
+  }
+}

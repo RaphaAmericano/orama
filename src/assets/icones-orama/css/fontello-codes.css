@@ -1,9 +1,5 @@
 
 .icon-reply:before { content: '\e800'; } /* '' */
-.icon-help-circled:before { content: '\e801'; } /* '' */
-.icon-block:before { content: '\e802'; } /* '' */
-.icon-block-1:before { content: '\e803'; } /* '' */
-.icon-spin1:before { content: '\e830'; } /* '' */
-.icon-spin3:before { content: '\e832'; } /* '' */
-.icon-spin4:before { content: '\e834'; } /* '' */
-.icon-help:before { content: '\f128'; } /* '' */
+.icon-block-2:before { content: '\e804'; } /* '' */
+.icon-search:before { content: '\e806'; } /* '' */
+.icon-info-circled-alt:before { content: '\f086'; } /* '' */

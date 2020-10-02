@@ -137,7 +137,6 @@ export class Fundo {
     return +this.volatility_12m;
   }
 
-
   get riscoColor(): string {
     switch(this.specification.fund_risk_profile.score_range_order){
       case 1:
@@ -159,7 +158,7 @@ export class Fundo {
       case 9:
         return  '#FA8708';
       case 10:
-        return '#FAFAFA';
+        return '#FA5E09';
       case 11:
         return '#F90F01';
       case 12:

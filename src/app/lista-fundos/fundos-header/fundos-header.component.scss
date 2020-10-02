@@ -24,6 +24,10 @@ td {
             padding-top: 2px;
           }
         } 
+        &.bottom {
+          background-color: $white;
+          border-radius: 4px;
+        }
       }
 
     }

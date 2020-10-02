@@ -1,5 +1,3 @@
-
-
 <td>
   <div class="indicador-risco" [style.border-left-color]="data.riscoColor"></div>
   <p>{{ data.simple_name }}
@@ -13,8 +11,16 @@
 <td>{{ data.volatility12Number | number: '2.1-2' }}</td>
 <td>{{ data.profitabilities24Number | number: '2.1-2' }}</td>
 <td>{{ data.operability.minimum_initial_application_amount }}</td>
-<td>{{ data.operability.retrieval_quotation_days_str }}</td>
+<!-- <td>{{ data.operability.retrieval_quotation_days_str }}</td> -->
+<td *ngIf="data?.operability.retrieval_quotation_days_str.length < 5">{{ data.operability.retrieval_quotation_days_str }}</td>
+<td *ngIf="data?.operability.retrieval_quotation_days_str.length >= 5">
+  <i data-tooltip 
+  data-position="bottom" 
+  tabindex="2" 
+  class="bottom icon-info-circled-alt" 
+  #tooltipInfo></i>
+
+</td>
 <td class="td-aplicar">
     <i [ngClass]="{'icon-reply': data.is_closed_to_capture, 'fi-prohibited': !data.is_closed_to_capture}"></i>
 </td>
-
