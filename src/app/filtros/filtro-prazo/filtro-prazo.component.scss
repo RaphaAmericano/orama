@@ -1,0 +1,22 @@
+@import 'foundation';
+
+.slider {
+    border-radius: 4px;
+    height: 0.3rem;
+    margin-top: 2rem;
+    margin-bottom: 1.25rem;
+    .slider-handle {
+        border-radius: 14px;
+        border: 5px solid #3E3E3E;
+        background-color: $white;
+    }
+    .slider-fill {
+        height: 0.3rem;
+        border-radius: 4px;
+        background-color: #28AEC2;
+    }
+}
+p {
+    font-weight: 300;
+    font-size: 13px;
+}

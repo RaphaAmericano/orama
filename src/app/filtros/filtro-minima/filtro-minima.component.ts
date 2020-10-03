@@ -1,6 +1,6 @@
 import { Store } from '@ngrx/store';
 import { FiltrosState } from './../state/filtro.state.app';
-import { AfterContentInit, Component, HostListener, Injector } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ElementRef, HostListener, Injector, ViewChild } from '@angular/core';
 import { FiltroBaseComponent } from '../filtro-base.component';
 import * as actions from './../state/filtro.actions';
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
@@ -13,10 +13,11 @@ import 'foundation-sites';
   templateUrl: './filtro-minima.component.html',
   styleUrls: ['./filtro-minima.component.scss']
 })
-export class FiltroMinimaComponent extends FiltroBaseComponent<FiltrosState> {
+export class FiltroMinimaComponent extends FiltroBaseComponent<FiltrosState> implements AfterViewInit {
   slider: any;
   dataSlider: number = 50000;
   dataSteps: number[] = [ 0, 1, 100, 500, 1000, 2000, 2500, 3000, 5000, 10000, 15000, 20000, 25000, 30000, 50000, 100000, 250000, 500000];
+  @ViewChild('minima') elementRef: ElementRef;
   private sliderObserver: MutationObserver;
 
 
@@ -28,7 +29,7 @@ export class FiltroMinimaComponent extends FiltroBaseComponent<FiltrosState> {
 
   public ngOnInit(): void{
     super.ngOnInit();
-    this.buildSlider();
+    
     const el = document.querySelector('.slider-handle');
 
     this.sliderObserver = new MutationObserver(( mutations: MutationRecord[] ) => {
@@ -54,16 +55,18 @@ export class FiltroMinimaComponent extends FiltroBaseComponent<FiltrosState> {
     );
   }
 
+  ngAfterViewInit(): void {
+    this.buildSlider();
+  }
+
   protected buildSlider(): void {
     const options: object = {
-      // start: this.dataSteps[0],
-      // end: this.dataSteps[this.dataSteps.length -1 ],
-      step: 1000, 
-      // initialStart: this.dataSteps[(this.dataSteps.length -1) / 2 ],
+      step: 100,
       end: this.dataSlider,
       initialStart: (this.dataSlider / 2 ),
     };
-    this.slider = new Foundation.Slider($('.slider'), options);
+    const el = $(this.elementRef.nativeElement);
+    this.slider = new Foundation.Slider(el, options);
   }
 
 }

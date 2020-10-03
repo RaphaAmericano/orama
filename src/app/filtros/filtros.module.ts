@@ -10,9 +10,11 @@ import { reducer } from './state/filtro.reducer';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { FiltroEffects } from './state/filtro.effects';
+import { FiltroRiscoComponent } from './filtro-risco/filtro-risco.component';
+import { FiltroPrazoComponent } from './filtro-prazo/filtro-prazo.component';
 
 @NgModule({
-  declarations: [FiltrosComponent, FiltroBuscaComponent, FiltroMinimaComponent],
+  declarations: [FiltrosComponent, FiltroBuscaComponent, FiltroMinimaComponent, FiltroRiscoComponent, FiltroPrazoComponent],
   imports: [
     CommonModule,
     FiltrosRoutingModule,
@@ -20,6 +22,6 @@ import { FiltroEffects } from './state/filtro.effects';
     StoreModule.forFeature('filtros', reducer),
     EffectsModule.forFeature([FiltroEffects])
   ],
-  exports: [FiltrosComponent, FiltroBuscaComponent, FiltroMinimaComponent]
+  exports: [FiltrosComponent, FiltroBuscaComponent, FiltroMinimaComponent, FiltroRiscoComponent, FiltroPrazoComponent]
 })
 export class FiltrosModule { }
