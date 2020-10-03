@@ -42,6 +42,7 @@ export class FundosHeaderComponent implements OnInit, OnDestroy, AfterViewInit {
     let options;
     if (className) {
       options = {
+        clickOpen: true,
         template: `<div class="tooltip tooltip-info"><p><b>Dias para conversão do resgate:</b><br>${this.data.operability.retrieval_liquidation_days_str}</p></div>`
       };
     }

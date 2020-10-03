@@ -44,6 +44,9 @@ td {
       margin: 0 2px;
       color: $white;
       border-radius: 12px;
+      &.has-tip {
+        border-bottom: none !important;
+      }
       &.fi-star{
         background-color: #639d31;
         padding: 1px 4px;

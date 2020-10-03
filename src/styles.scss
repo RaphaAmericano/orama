@@ -20,6 +20,16 @@ html, body {
 }
 body {
   .tooltip-info {
+    border: 1px solid $light-gray;
+    border-radius: 4px;
+    color: $black;
     background-color: $white;
+    &.bottom {
+      &::before {
+        border-color: transparent transparent transparent; 
+        background-color: $white;
+        box-shadow: -2px 0 1px 4px $light-gray; 
+      }
+    }
   }
 }
