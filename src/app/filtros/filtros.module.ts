@@ -12,9 +12,10 @@ import { EffectsModule } from '@ngrx/effects';
 import { FiltroEffects } from './state/filtro.effects';
 import { FiltroRiscoComponent } from './filtro-risco/filtro-risco.component';
 import { FiltroPrazoComponent } from './filtro-prazo/filtro-prazo.component';
+import { FiltroCheckboxComponent } from './filtro-checkbox/filtro-checkbox.component';
 
 @NgModule({
-  declarations: [FiltrosComponent, FiltroBuscaComponent, FiltroMinimaComponent, FiltroRiscoComponent, FiltroPrazoComponent],
+  declarations: [FiltrosComponent, FiltroBuscaComponent, FiltroMinimaComponent, FiltroRiscoComponent, FiltroPrazoComponent, FiltroCheckboxComponent],
   imports: [
     CommonModule,
     FiltrosRoutingModule,
@@ -22,6 +23,6 @@ import { FiltroPrazoComponent } from './filtro-prazo/filtro-prazo.component';
     StoreModule.forFeature('filtros', reducer),
     EffectsModule.forFeature([FiltroEffects])
   ],
-  exports: [FiltrosComponent, FiltroBuscaComponent, FiltroMinimaComponent, FiltroRiscoComponent, FiltroPrazoComponent]
+  exports: [FiltrosComponent, FiltroBuscaComponent, FiltroMinimaComponent, FiltroRiscoComponent, FiltroPrazoComponent, FiltroCheckboxComponent]
 })
 export class FiltrosModule { }
