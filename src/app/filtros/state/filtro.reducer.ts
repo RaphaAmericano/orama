@@ -4,6 +4,7 @@ import { FiltrosActions } from './filtro.actions';
 const initialState: FiltrosState = {
   minima: null,
   busca: '',
+  prazo: null,
   erro: ''
 }
 
@@ -15,16 +16,27 @@ export function reducer(state = initialState, action: FiltrosActions ): FiltrosS
         ...state,
         minima: action.payload.dado
       };
-    case FiltrosActionTypes.LoadFiltroBusca:
-      return {
-        ...state,
-        busca: action.payload.dado
-      }
     case FiltrosActionTypes.ErroFiltroMinima:
       return {
         ...state,
         minima: null,
         erro: action.payload
+      }
+    case FiltrosActionTypes.NewFiltroPrazo:
+      return {
+        ...state,
+        prazo: action.payload.dado
+      }
+    case FiltrosActionTypes.ErroFiltroPrazo:
+      return {
+        ...state,
+        prazo: null,
+        erro: action.payload
+      }
+    case FiltrosActionTypes.LoadFiltroBusca:
+      return {
+        ...state,
+        busca: action.payload.dado
       }
     default:
       return state;

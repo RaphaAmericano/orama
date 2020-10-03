@@ -12,3 +12,13 @@ export const getFiltros = createSelector(
   getFiltrosFeatureState,
   state => state
 );
+
+export const getFiltroMinima = createSelector(
+  getFiltrosFeatureState,
+  state => state.minima
+);
+
+export const getFiltroBusca = createSelector( 
+  getFiltrosFeatureState,
+  state => state.busca
+)

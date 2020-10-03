@@ -9,7 +9,8 @@
         </div>
       </div>
       <div class="cell smal-12">
-        <p>Até {{ formulario.get('dado').value }} dias uteis</p>
+        <p>Até {{ formulario.get('dado').value }} dias úteis</p>
+        <!-- <p *ngIf="formulario.get('dado').value >= 1 ">Até {{ formulario.get('dado').value }} dia útil</p> -->
       </div>
     </div>
   </form>

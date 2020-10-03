@@ -19,4 +19,23 @@ export class LoadFiltroBusca implements Action {
   constructor(public payload: { dado: string } ){}
 }
 
-export type FiltrosActions = LoadFiltroMinima | NewFiltroMinima | ErroFiltroMinima | LoadFiltroBusca;
+export class LoadFiltroPrazo implements Action {
+  readonly type = FiltrosActionTypes.LoadFiltroPrazo;
+}
+export class NewFiltroPrazo implements Action {
+  readonly type = FiltrosActionTypes.NewFiltroPrazo;
+  constructor(public payload: { dado: number } ){}
+}
+export class ErroFiltroPrazo implements Action {
+  readonly type = FiltrosActionTypes.ErroFiltroPrazo;
+  constructor(public payload: any ){}
+}
+
+export type FiltrosActions =
+LoadFiltroMinima |
+NewFiltroMinima |
+ErroFiltroMinima |
+LoadFiltroPrazo|
+NewFiltroPrazo|
+ErroFiltroPrazo|
+LoadFiltroBusca;

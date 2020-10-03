@@ -1,11 +1,11 @@
-import { AfterViewInit, Component, ElementRef, Injector, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Injector, ViewChild } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { FiltroBaseComponent } from '../filtro-base.component';
 import { FiltrosState } from '../state/filtro.state.app';
-import * as fundosActions from '../../state/index';
+import * as fromFundos from '../../state/index';
+import * as actions from '../state/filtro.actions';
 import { Fundo } from 'src/app/core/models/fundo.model';
-import { catchError, concatMap, distinct, distinctUntilChanged, filter, map, max, mergeMap, switchMap, takeWhile, tap, toArray } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-filtro-prazo',
@@ -40,12 +40,20 @@ export class FiltroPrazoComponent extends FiltroBaseComponent<FiltrosState> impl
       attributeOldValue: true,
       childList: false,
       characterData: false
-    })
+    });
+
+    this.formulario.valueChanges.pipe(
+      debounceTime(500), distinctUntilChanged()
+    ).subscribe( 
+      val => {
+        console.log(val);
+        this.store.dispatch(new actions.NewFiltroPrazo(val))}
+    );
   }
 
   ngAfterViewInit(): void {
     this.store.pipe(
-      select(fundosActions.getFundosBase),
+      select(fromFundos.getFundosBase),
       map((fundos: Fundo[]) => fundos ? fundos.map((fundo: Fundo) => fundo.operability.retrieval_quotation_days) : new Array<number>()),
     ).subscribe( 
       (dias) => { 
