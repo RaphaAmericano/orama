@@ -17,6 +17,8 @@ export class FiltroPrazoComponent extends FiltroBaseComponent<FiltrosState> impl
   public slider: any;
   public maxRange: number;
   @ViewChild('prazo') elementRef: ElementRef;
+  private sliderObserver: MutationObserver;
+
   constructor(
     protected injector: Injector,
     protected store: Store<FiltrosState>
@@ -26,6 +28,19 @@ export class FiltroPrazoComponent extends FiltroBaseComponent<FiltrosState> impl
 
   ngOnInit(): void {
     super.ngOnInit();
+    const el = document.querySelector('.slider-handle.slider-prazo');
+    this.sliderObserver = new MutationObserver((mutations: MutationRecord[]) => {
+      mutations.forEach((mutation: MutationRecord) => {
+        this.formulario.setValue({ dado: +mutation.target['ariaValueNow']})
+      });
+    });
+    this.sliderObserver.observe(el, {
+      attributes: true,
+      attributeFilter: [ 'aria-valuenow'],
+      attributeOldValue: true,
+      childList: false,
+      characterData: false
+    })
   }
 
   ngAfterViewInit(): void {
@@ -34,7 +49,7 @@ export class FiltroPrazoComponent extends FiltroBaseComponent<FiltrosState> impl
       map((fundos: Fundo[]) => fundos ? fundos.map((fundo: Fundo) => fundo.operability.retrieval_quotation_days) : new Array<number>()),
     ).subscribe( 
       (dias) => { 
-        if(dias.length > 0){  
+        if(dias.length > 0) {  
           this.maxRange = Math.max.apply(Math, dias);
           this.buildSlider(this.maxRange);
         }

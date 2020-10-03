@@ -3,13 +3,13 @@
       <div class="cell small-12">
         <label>Prazo de resgate</label>
         <div class="slider" data-slider #prazo>
-          <span class="slider-handle"  data-slider-handle role="slider" tabindex="2" aria-controls="bindPrazo"></span>
+          <span class="slider-handle slider-prazo"  data-slider-handle role="slider" tabindex="2" aria-controls="bindPrazo"></span>
           <span class="slider-fill" data-slider-fill></span>
           <input formControlName="dado" type="hidden" id="bindPrazo">
         </div>
       </div>
       <div class="cell smal-12">
-        <!-- <p>Até {{ formulario.get('dado').value | currency: "BRL" }} dias uteis</p> -->
+        <p>Até {{ formulario.get('dado').value }} dias uteis</p>
       </div>
     </div>
   </form>

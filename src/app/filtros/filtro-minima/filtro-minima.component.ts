@@ -30,7 +30,7 @@ export class FiltroMinimaComponent extends FiltroBaseComponent<FiltrosState> imp
   public ngOnInit(): void{
     super.ngOnInit();
     
-    const el = document.querySelector('.slider-handle');
+    const el = document.querySelector('.slider-handle.slider-minima');
 
     this.sliderObserver = new MutationObserver(( mutations: MutationRecord[] ) => {
       mutations.forEach((mutation: MutationRecord) => {
