@@ -15,7 +15,7 @@ import 'foundation-sites';
 })
 export class FiltroMinimaComponent extends FiltroBaseComponent<FiltrosState> implements AfterViewInit {
   slider: any;
-  dataSlider: number = 50000;
+  dataSlider: number = 500000;
   dataSteps: number[] = [ 0, 1, 100, 500, 1000, 2000, 2500, 3000, 5000, 10000, 15000, 20000, 25000, 30000, 50000, 100000, 250000, 500000];
   @ViewChild('minima') elementRef: ElementRef;
   private sliderObserver: MutationObserver;

@@ -43,7 +43,9 @@ export class ListaFundosComponent implements OnInit {
                 return;
               }
               return fundos
-                .filter((fundo: Fundo) => +fundo.operability.minimum_initial_application_amount > filtros.minima )
+                .filter((fundo: Fundo) => +fundo.operability.minimum_initial_application_amount < filtros.minima )
+                // Filtro de prazo
+                .filter((fundo: Fundo) => fundo.operability.retrieval_quotation_days <= filtros.prazo )
                 .filter((fundo: Fundo) => {
                   const strSearch = filtros.busca.toLowerCase();
                   return fundo.simple_name.toLowerCase().indexOf(strSearch) >= 0;

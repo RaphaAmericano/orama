@@ -10,7 +10,7 @@
 <td>{{ data.profitabilitiesMouthNumber | number: '2.1-2' }}</td>
 <td>{{ data.volatility12Number | number: '2.1-2' }}</td>
 <td>{{ data.profitabilities24Number | number: '2.1-2' }}</td>
-<td>{{ data.operability.minimum_initial_application_amount }}</td>
+<td>{{ data.operability.minimum_initial_application_amount  }}</td>
 <!-- <td>{{ data.operability.retrieval_quotation_days_str }}</td> -->
 <td *ngIf="data?.operability.retrieval_quotation_days_str.length < 5">{{ data.operability.retrieval_quotation_days_str }}</td>
 <td *ngIf="data?.operability.retrieval_quotation_days_str.length >= 5">

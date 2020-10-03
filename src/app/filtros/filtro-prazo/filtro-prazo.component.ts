@@ -45,9 +45,7 @@ export class FiltroPrazoComponent extends FiltroBaseComponent<FiltrosState> impl
     this.formulario.valueChanges.pipe(
       debounceTime(500), distinctUntilChanged()
     ).subscribe( 
-      val => {
-        console.log(val);
-        this.store.dispatch(new actions.NewFiltroPrazo(val))}
+      val => this.store.dispatch(new actions.NewFiltroPrazo(val))
     );
   }
 
