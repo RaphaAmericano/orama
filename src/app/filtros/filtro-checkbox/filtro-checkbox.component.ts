@@ -4,10 +4,11 @@ import { select, Store } from '@ngrx/store';
 import { FiltroBaseComponent } from '../filtro-base.component';
 import { FiltrosState } from '../state/filtro.state.app';
 import * as fromFundos from '../../state/index';
+import * as fromFiltros from '../state/index';
 import * as actions from '../state/filtro.actions';
-import { debounceTime, distinct, switchMap, tap, toArray } from 'rxjs/operators';
+import { combineAll, concatMap, debounceTime, distinct, flatMap, map, mergeMap, switchMap, tap, toArray, withLatestFrom } from 'rxjs/operators';
 import { Fundo } from 'src/app/core/models/fundo.model';
-import { of, pipe } from 'rxjs';
+import { combineLatest, forkJoin, of, pipe, zip } from 'rxjs';
 
 @Component({
   selector: 'app-filtro-checkbox',
@@ -28,19 +29,74 @@ export class FiltroCheckboxComponent extends FiltroBaseComponent<FiltrosState> {
   ngOnInit(): void {
     super.ngOnInit();
     // this.buildFormArray();
-
+    //specification.fund_type
     this.store.pipe(
       select(fromFundos.getFundosBase),
       debounceTime(5000),
-      switchMap((fundos: Fundo[] ) => fundos.map( (fundo: Fundo ) =>  { 
-         return { nome: fundo.benchmark.name, id: fundo.benchmark.id };
+      map((fundos: Fundo[] ) => fundos.map( (fundo: Fundo ) =>  { 
+          const branchmark = { 
+            branchmark: fundo.benchmark.name, 
+            id: fundo.benchmark.id,
+            checked: true,
+            checkboxes: new Array()
+          };
+          fundos.map((fundo1:Fundo) => {
+            if(fundo.benchmark.id == fundo1.benchmark.id){
+              branchmark.checkboxes.push( fundo1.specification.fund_type )
+            }
+          })
+          return branchmark;
+          }
+        )
+      )
+    );
+    
+    const branchs = this.store.pipe(
+      select(fromFundos.getFundosBase),
+      debounceTime(5000),
+      map((fundos: Fundo[]) => fundos.map( (fundo: Fundo) => {
+          return { nome: fundo.benchmark.name , id: fundo.benchmark.id, checkboxes: [] }
           }
         )
       ),
-      distinct((dado: { nome: string, id: number }) => dado.id ),
-      tap(dado => this.store.dispatch(new actions.NewFiltroCheckbox(dado)))
+      map( (dados) => {
+        return dados.filter((dado, i, self) => {
+          return i === self.findIndex((branch) => branch.id === dado.id && branch.nome === dado.nome)
+        })
+      })
     )
-    .subscribe( res => console.log(res) )
+
+    const checkboxes = this.store.pipe(
+      select(fromFundos.getFundosBase),
+      debounceTime(5000),
+      map((fundos: Fundo[]) => fundos.map( (fundo: Fundo) => {
+            return { nome: fundo.specification.fund_type, idBranch: fundo.benchmark.id }
+          }
+        )
+      ),
+      map( (checkboxs) => {
+        return checkboxs.filter((checkbox, i, self) => {
+          return i === self.findIndex((branch) => branch.nome === checkbox.nome && branch.idBranch === checkbox.idBranch )
+        })
+      })
+    )
+
+    const mixed = zip(
+      branchs,
+      checkboxes
+    ).pipe( 
+      map(([branchs, checkboxes]) => {
+        return branchs.map((branch) => {
+          checkboxes.map(checkbox => {
+            if(checkbox.idBranch === branch.id){
+              branch.checkboxes.push(checkbox);
+            }
+          });
+          return branch;
+        })
+      }),
+      tap(val => console.log(val))
+    ).subscribe()
 
   }
 

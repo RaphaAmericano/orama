@@ -22,3 +22,8 @@ export const getFiltroBusca = createSelector(
   getFiltrosFeatureState,
   state => state.busca
 )
+
+export const getFilroCheckboxNivel1 = createSelector(
+  getFiltrosFeatureState,
+  state => state.checkbox
+)
