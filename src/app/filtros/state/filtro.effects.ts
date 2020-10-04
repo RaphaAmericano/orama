@@ -18,29 +18,4 @@ export class FiltroEffects {
         private store: Store,
         private databaseService: DatabaseService){}
 
-    // @Effect()
-    // filtraFundos$: Observable<any> = this.actions$.pipe(
-        // ofType(FiltrosActionTypes.LoadFiltroBusca),
-        // select(fromFiltro.getFiltros),
-        // tap(val => console.log(val))
-        // map((action:{ payload: { dado: string }} ) => {
-        //     this.store.pipe(select(fromFundo.getFundos)).subscribe(
-        //         fundos => {
-        //             const searchStr = action.payload.dado;
-        //             if (searchStr === '' || searchStr === null){
-        //                 return of(new actions.ErroFiltroMinima('vazio'));
-        //             }
-        //             const newState = fundos.filter(
-        //                 (fundo: Fundo) => {
-        //                     return fundo.simple_name.indexOf(searchStr) >= 0 ;
-        //                 }
-        //             );
-        //             console.log(newState);
-        //             return new fundoActions.SaveFundos(newState);
-        //         }
-        //     );
-        
-        // }),
-        // tap(val => console.log(val))
-    // )
 }

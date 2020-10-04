@@ -18,12 +18,12 @@ export const getFiltroMinima = createSelector(
   state => state.minima
 );
 
-export const getFiltroBusca = createSelector( 
+export const getFiltroBusca = createSelector(
   getFiltrosFeatureState,
   state => state.busca
-)
+);
 
-export const getFilroCheckboxNivel1 = createSelector(
+export const getFiltroCheckbox = createSelector(
   getFiltrosFeatureState,
   state => state.checkbox
-)
+);

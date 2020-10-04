@@ -5,7 +5,7 @@ const initialState: FiltrosState = {
   minima: null,
   busca: '',
   prazo: null,
-  checkbox: [],
+  checkbox: null,
   erro: ''
 }
 
@@ -42,7 +42,7 @@ export function reducer(state = initialState, action: FiltrosActions ): FiltrosS
     case FiltrosActionTypes.NewFiltroCheckbox:
       return {
         ...state,
-        checkbox: state.checkbox.concat(action.payload)
+        checkbox: action.payload
       }
     default:
       return state;

@@ -10,7 +10,6 @@ export enum FiltrosActionTypes {
 
   LoadFiltroCheckbox = '[Checkbox] Carregando filtro de Checkbox',
   NewFiltroCheckbox = '[Checkbox] Novo dado do filtro de Checkbox',
-  NewFiltroSubCheckbox = '[Checkbox] Novo dado do filtro de Checkbox de segundo nível',
   ErroFiltroCheckbox = '[Checkbox] Erro ao realizar a busca',
   ClearFiltroCheckbox = '[Checkbox] Limpa o dado do filtro de Checkbox',
 
