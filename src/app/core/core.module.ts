@@ -1,6 +1,7 @@
 import { DatabaseService } from './services/database.service';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { StateService } from './services/state.service';
 
 
 
@@ -8,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     HttpClientModule
   ],
-  providers: [DatabaseService]
+  providers: [DatabaseService, StateService]
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule ){
