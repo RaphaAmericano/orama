@@ -2,14 +2,14 @@
     <button (click)="visualizarForm()">form</button>
     <form [formGroup]="formulario">
         <!-- <ng-container *ngFor="let group of formulario.controls | keyvalue; index as i "> -->
-        <ng-container *ngFor="let key of objectKeys(formulario.controls) ; index as i ">
-            {{ formulario.controls[key].value }} {{ key }}
+        <!-- <ng-container *ngFor="let key of objectKeys(formulario.controls) ; index as i "> -->
+            <!-- {{ formulario.controls[key].value }} {{ key }} -->
             <fieldset>
                 <!-- Principal  -->
-                <legend>{{ getCheckboxLabelById(key) | async }}</legend>
+                <!-- <legend>{{ getCheckboxLabelById(key) | async }}</legend>
                 <input 
                 formControlName="formulario.controls[key]"
-                type="checkbox"> 
+                type="checkbox">  -->
                 <!-- Segundo nivel -->
                 <!-- <fieldset>
                     <ng-container *ngFor="let key2 of objectKeys(formulario.controls[key].controls?)">
@@ -19,7 +19,7 @@
                 </fieldset> -->
                 <!--  -->
             </fieldset>
-        </ng-container>
+        <!-- </ng-container> -->
     </form>
 
 </div>

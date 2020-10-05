@@ -1,6 +1,7 @@
 import { FiltrosModule } from './filtros/filtros.module';
 import { ListaFundosModule } from './lista-fundos/lista-fundos.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LOCALE_ID, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +21,7 @@ import { FundoEffects } from './state/fundo.effects';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     CoreModule,
     AppRoutingModule,
     FiltrosModule,
