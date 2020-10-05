@@ -47,15 +47,23 @@ export class FiltroCheckboxComponent extends FiltroBaseComponent<FiltrosState> {
           return checkboxes.map((checkbox) => {
             const controls = {};
             for(const key of checkbox.checkboxes){
-              console.log(key);
-              controls[key.id] = key.value;
+              controls[key.id] = new FormControl(key.value);
             }
-            controls[checkbox.id] = true;
-            this.formulario.addControl(checkbox.id.toString(), this.formBuilder.group(controls));
+            // console.log(controls);
+            const formulario = new FormGroup( {
+              [checkbox.id]: this.formBuilder.control(checkbox.value),
+              checkboxes: new FormGroup(controls)
+            })
+
+            console.log(formulario);
+            // this.formulario.addControl(checkbox.id.toString(), new FormControl(checkbox.value));
+            this.formulario.addControl(checkbox.id.toString(), formulario);
           });
         }
       )
     ).subscribe();
   }
-
+  public visualizarForm(): void {
+    console.log(this.formulario);
+  }
 }
