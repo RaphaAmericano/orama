@@ -40,6 +40,8 @@ export class NewFiltroCheckbox implements Action {
   constructor(public payload: any){}
 }
 
+
+
 export type FiltrosActions =
 LoadFiltroMinima |
 NewFiltroMinima |

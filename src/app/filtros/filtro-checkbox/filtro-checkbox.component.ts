@@ -1,14 +1,14 @@
 import { AfterViewChecked, AfterViewInit, Component, Injector } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
 import { FiltroBaseComponent } from '../filtro-base.component';
 import { FiltrosState } from '../state/filtro.state.app';
 import * as fromFundos from '../../state/index';
 import * as fromFiltros from '../state/index';
 import * as actions from '../state/filtro.actions';
-import { combineAll, concatMap, debounceTime, distinct, flatMap, map, mergeMap, skipUntil, skipWhile, switchMap, tap, toArray, withLatestFrom } from 'rxjs/operators';
+import { combineAll, concatMap, debounceTime, distinct, find, findIndex, flatMap, map, mergeMap, pluck, skipUntil, skipWhile, switchMap, tap, toArray, withLatestFrom } from 'rxjs/operators';
 import { Fundo } from 'src/app/core/models/fundo.model';
-import { combineLatest, forkJoin, of, pipe, zip } from 'rxjs';
+import { combineLatest, forkJoin, Observable, of, pipe, zip } from 'rxjs';
 
 export interface Checkbox {
   id: number;
@@ -34,11 +34,15 @@ export class FiltroCheckboxComponent extends FiltroBaseComponent<FiltrosState> {
   }
 
   ngOnInit(): void {
-    super.ngOnInit();
-    this.buildFormArray();
+    // super.ngOnInit();
+    this.buildFormGroups();
+    this.formulario.valueChanges.subscribe(
+      res => console.log(res)
+    )
   }
 
-  private buildFormArray(): void {
+  private buildFormGroups(): void {
+    console.log(this.formulario);
     this.store.pipe(
       select(fromFiltros.getFiltroCheckbox),
       skipWhile(val => val === null),
@@ -49,14 +53,10 @@ export class FiltroCheckboxComponent extends FiltroBaseComponent<FiltrosState> {
             for(const key of checkbox.checkboxes){
               controls[key.id] = new FormControl(key.value);
             }
-            // console.log(controls);
             const formulario = new FormGroup( {
               [checkbox.id]: this.formBuilder.control(checkbox.value),
               checkboxes: new FormGroup(controls)
-            })
-
-            console.log(formulario);
-            // this.formulario.addControl(checkbox.id.toString(), new FormControl(checkbox.value));
+            });
             this.formulario.addControl(checkbox.id.toString(), formulario);
           });
         }
@@ -64,6 +64,21 @@ export class FiltroCheckboxComponent extends FiltroBaseComponent<FiltrosState> {
     ).subscribe();
   }
   public visualizarForm(): void {
-    console.log(this.formulario);
+    console.log(this.formulario.controls);
+  }
+
+  public getCheckboxLabelById(id: number): Observable<string> {
+   return this.store.select(fromFiltros.getFiltroCheckbox).pipe(
+      skipWhile(val => val === null),
+      switchMap((checkboxes: Checkbox[]) => checkboxes.map( checkbox => checkbox)
+      ),
+      find(checkbox => checkbox.id === +id ),
+      pluck('nome')
+    );
+    
+  };
+
+  public objectKeys(obj: any): any {
+    return Object.keys(obj);
   }
 }

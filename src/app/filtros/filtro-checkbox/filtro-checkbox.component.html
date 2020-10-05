@@ -1,20 +1,25 @@
 <div class="grid-y grid-padding-x">
+    <button (click)="visualizarForm()">form</button>
     <form [formGroup]="formulario">
-        <fieldset class="large-12" *ngFor="let tipo of formulario.controls; index as i">
-            {{ tipo }}
-
-        </fieldset>
-
-
-        <!-- <fieldset class="large-12">
-            <legend>Renda Fixa</legend>
-            
-            <ng-container *ngFor="let control of formulario.get('dado').value.controls; index as i">
-               
-               <input  type="checkbox"><label></label>
-            </ng-container>
-        </fieldset> -->
+        <!-- <ng-container *ngFor="let group of formulario.controls | keyvalue; index as i "> -->
+        <ng-container *ngFor="let key of objectKeys(formulario.controls) ; index as i ">
+            {{ formulario.controls[key].value }} {{ key }}
+            <fieldset>
+                <!-- Principal  -->
+                <legend>{{ getCheckboxLabelById(key) | async }}</legend>
+                <input 
+                formControlName="formulario.controls[key]"
+                type="checkbox"> 
+                <!-- Segundo nivel -->
+                <!-- <fieldset>
+                    <ng-container *ngFor="let key2 of objectKeys(formulario.controls[key].controls?)">
+                        <input  type="checkbox">
+                        <label>{{ key2 }}</label>
+                    </ng-container>
+                </fieldset> -->
+                <!--  -->
+            </fieldset>
+        </ng-container>
     </form>
-</div>
 
-<button (click)="visualizarForm()">form</button>
+</div>

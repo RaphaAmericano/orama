@@ -11,8 +11,7 @@ import { Fundo } from '../models/fundo.model';
 })
 export class StateService {
 
-  constructor(private store: Store<any>) { 
-    console.log('State Service');
+  constructor(private store: Store<any>) {
     this.initCheckboxesState();
   }
   private initCheckboxesState(): void {
