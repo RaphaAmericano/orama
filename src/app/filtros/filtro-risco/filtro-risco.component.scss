@@ -1,0 +1,31 @@
+$cores-medidores: (
+    1: #ADEAFF,
+    2: #66F3E2,
+    3: #91EC69,
+    4: #B1F723,
+    5: #DEF508,
+    6: #F9DF02,
+    7: #FEDD00,
+    8: #FCBD05,
+    9: #FABD00,
+    10: #FA5E09,
+    11: #F90F01,
+    12: #B81114
+);
+
+
+.medidores {
+    transform: rotate(180deg);
+}
+
+.medidor {
+    width: 8px;
+    // height: 5px;
+    margin: 0 2px;
+    @each $i, $color in $cores-medidores {
+        &.medidor-item-#{$i}{
+            height: 10px + ($i * 4);
+            background-color: $color;
+        }
+    }
+}

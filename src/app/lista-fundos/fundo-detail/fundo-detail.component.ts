@@ -29,15 +29,6 @@ import { state, style, transition, trigger, animate, keyframes } from '@angular/
       state('void', style({ opacity: 0, visibility: 'hidden'})),
       state('*', style({ opacity: 1, visibility: 'visible' })),
       transition(':enter', animate(1000))
-      // transition(':enter', animate(1000, keyframes([
-      //   style({ offset: 0}),
-      //   style({ offset: 0.25}),
-      //   style({ offset: 0.5}),
-      //   style({ offset: 0.75}),
-      //   style({ offset: 0.85, opacity: 0.5}),
-      //   style({ offset: 0.95, opacity: 0.75}),
-      //   style({ offset: 1, opacity: 1})
-      // ])))
     ] )
   ]
 })
