@@ -5,7 +5,7 @@ const initialState: FiltrosState = {
   minima: null,
   busca: '',
   prazo: null,
-  risco: null,
+  risco: 12,
   checkbox: null,
   erro: ''
 }
