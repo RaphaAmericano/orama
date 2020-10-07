@@ -10,6 +10,7 @@ import { FundoState } from './../state/fundo.state.app';
 import * as fromFundo from './../state/index';
 import * as fromFiltros from '../filtros/state/index';
 import * as actions from '../state/fundo.actions';
+import { FiltrosActionTypes } from '../filtros/state/filtro.types.enum';
 @Component({
   selector: 'app-lista-fundos',
   templateUrl: './lista-fundos.component.html',
@@ -44,7 +45,8 @@ export class ListaFundosComponent implements OnInit {
               }
               return fundos
                 .filter((fundo: Fundo) => +fundo.operability.minimum_initial_application_amount < filtros.minima )
-                // Filtro de prazo
+                //Filtro de risco
+                .filter((fundo: Fundo) =>  +fundo.specification.fund_risk_profile.score_range_order <= filtros.risco)
                 .filter((fundo: Fundo) => fundo.operability.retrieval_quotation_days <= filtros.prazo )
                 .filter((fundo: Fundo) => {
                   const strSearch = filtros.busca.toLowerCase();

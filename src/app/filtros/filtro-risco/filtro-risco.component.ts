@@ -24,7 +24,7 @@ export class FiltroRiscoComponent extends FiltroBaseComponent<FiltrosState>{
     )
   }
   
-  public selectMedidor(medidor: number):void { 
+  public selectMedidor(medidor: number): void { 
     this.formulario.get('dado').setValue(medidor);
   }
 
