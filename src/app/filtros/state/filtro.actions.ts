@@ -40,7 +40,18 @@ export class NewFiltroCheckbox implements Action {
   constructor(public payload: any){}
 }
 
+export class NewFiltroRisco implements Action {
+  readonly type = FiltrosActionTypes.NewFiltroRisco;
+  constructor(public payload: number){}
+}
 
+export class ClearFiltroRisco implements Action {
+  readonly type = FiltrosActionTypes.ClearFiltroRisco;
+}
+
+export class ErroFiltroRisco implements Action {
+  readonly type = FiltrosActionTypes.ErroFiltroRisco;
+}
 
 export type FiltrosActions =
 LoadFiltroMinima |
@@ -51,5 +62,8 @@ NewFiltroPrazo|
 ErroFiltroPrazo|
 LoadFiltroBusca |
 LoadFiltrosCheckbox |
-NewFiltroCheckbox
+NewFiltroCheckbox |
+NewFiltroRisco |
+ClearFiltroRisco |
+ErroFiltroRisco
 ;

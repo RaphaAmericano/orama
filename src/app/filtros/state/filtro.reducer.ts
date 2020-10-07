@@ -5,6 +5,7 @@ const initialState: FiltrosState = {
   minima: null,
   busca: '',
   prazo: null,
+  risco: null,
   checkbox: null,
   erro: ''
 }
@@ -43,6 +44,16 @@ export function reducer(state = initialState, action: FiltrosActions ): FiltrosS
       return {
         ...state,
         checkbox: action.payload
+      }
+    case FiltrosActionTypes.NewFiltroRisco:
+      return {
+        ...state,
+        risco: action.payload
+      }
+    case FiltrosActionTypes.ErroFiltroRisco:
+      return {
+        ...state,
+        erro: 'Não foi possível atualizar o estado do filtro de risco'
       }
     default:
       return state;

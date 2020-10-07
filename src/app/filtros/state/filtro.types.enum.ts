@@ -13,6 +13,10 @@ export enum FiltrosActionTypes {
   ErroFiltroCheckbox = '[Checkbox] Erro ao realizar a busca',
   ClearFiltroCheckbox = '[Checkbox] Limpa o dado do filtro de Checkbox',
 
+  NewFiltroRisco = '[Risco] Novo dado do filtro de risco',
+  ErroFiltroRisco = '[Risco] Erro ao realizar a busca',
+  ClearFiltroRisco = '[Risco] Limpa o dado do filtro de risco',
+
   LoadFiltroBusca = '[Busca] Carregando filtro de busca',
   NewFiltroBusca = '[Busca] Novo dado do filtro de busca',
   ClearFiltroBusca = '[Busca] Limpa o dado do filtro de busca'

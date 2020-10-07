@@ -19,8 +19,8 @@ $cores-medidores: (
 }
 
 .medidor {
+    cursor: pointer;
     width: 8px;
-    // height: 5px;
     margin: 0 2px;
     @each $i, $color in $cores-medidores {
         &.medidor-item-#{$i}{
