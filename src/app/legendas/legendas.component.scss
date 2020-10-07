@@ -1,0 +1,64 @@
+@import 'foundation';
+
+$font_size: 13px;
+:host {
+    font-size: $font_size;
+}
+h6 {
+    font-family: 'Roboto';
+    text-transform: uppercase
+}
+ul {
+    margin-left: 0;
+    color: $black;
+    list-style-type: none;
+    li{
+        margin-bottom: 2px;
+        &:nth-child(3){
+            margin-bottom: -6px;
+            margin-top: -4px;
+        }
+        i{
+            margin-right: 10px;
+            
+            &.icon-reply {
+                font-size: 12px;
+                color: $white;
+                width: 1rem;
+                height: 1rem;
+                padding: 4px;
+                box-shadow: 0px 2px 4px $medium-gray;
+                border-radius: 50%;
+                background-color:#119c9f;
+                &:before {
+                    transform: rotate(90deg);
+                    padding-top: 2px;
+                }
+            }
+            &.fi-check {
+                background-color: $medium-gray;
+                color: $white;
+                border-radius: 12px;
+                padding: 0px 4px;
+            }
+            &.fi-star{
+                color: $white;
+                background-color: #639d31;
+                padding: 1px 4px;
+                font-size: 14px;
+                border-radius: 12px;
+            }
+            &.fi-prohibited {
+                color: $light-gray;
+                font-size: 28px;
+            }
+            &.icon-info-circled-alt {
+                color: $black;
+                font-size: 20px;
+                &::before {
+                    margin: 0;
+                }
+            }
+        }
+    }
+}

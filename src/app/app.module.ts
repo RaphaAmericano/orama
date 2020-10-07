@@ -14,10 +14,12 @@ import { CoreModule } from './core/core.module';
 import { HeaderComponent } from './header/header.component';
 import { reducer } from './state/fundo.reducer';
 import { FundoEffects } from './state/fundo.effects';
+import { LegendasComponent } from './legendas/legendas.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    LegendasComponent
   ],
   imports: [
     BrowserModule,
